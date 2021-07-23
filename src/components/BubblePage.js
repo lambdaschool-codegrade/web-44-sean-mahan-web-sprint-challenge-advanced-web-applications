@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import axios from "axios";
-
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
 import fetchColorService from '../services/fetchColorService';
@@ -26,7 +24,7 @@ const BubblePage = () => {
       .put(`/api/colors/${editColor.id}`, editColor)
       .then((res) => {
         setColors(colors.map((color) => {
-          if(color.id == Number(res.data.id)){
+          if(color.id === Number(res.data.id)){
             return res.data
           }else{
             return color;

@@ -32,7 +32,9 @@ const Login = () => {
     e.preventDefault();
 
     if(loginInfo.login.user !== "Lambda" || loginInfo.login.pass !== "School"){
-      setError("Double check your inputs, I think you put them in wrong");
+      setError({error: "Double check your inputs, I think you put them in wrong"});
+    }else{
+      setError({error: ""});
     }
     
     axiosWithAuth()
@@ -44,7 +46,6 @@ const Login = () => {
       .catch(err => {console.log(err)})
   }
   //replace with error state
-
   return (
     <div>
       <h1>Welcome to the Bubble App!</h1>
@@ -72,7 +73,7 @@ const Login = () => {
 
         <button>Log in</button>
       </form>
-      <p id="error" className="error">{error}</p>
+      {error === "" ? <p> Oops, seems like there has been an error</p> : <></>}
     </div>
   );
 };
